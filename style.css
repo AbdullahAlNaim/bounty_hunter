@@ -1,0 +1,21 @@
+table {
+    border: solid 5px black;
+}
+
+th {
+    border: solid 2px black;
+}
+
+td {
+    border: solid 2px black;
+}
+
+img {
+    width: 100px;
+}
+
+.page {
+    background-image: url('page.png');
+    width: 400px;
+
+}
