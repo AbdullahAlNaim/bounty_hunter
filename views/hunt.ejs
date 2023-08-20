@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASKS</title>
+    <link rel="stylesheet" href="hunt_style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>BOUNTY HUNTER</h1>
+        <ul>
+            <li><a href="http://localhost:3000/home">
+                    <button>Home</button></a></li>
+            <li>
+                <a href="http://localhost:3000/tasks"><button>Tasks</button></a>
+
+            </li>
+            <li><button>Challenge</button></li>
+            <li><button>Account</button></li>
+            <li><button>Settings</button></li>
+        </ul>
+    </nav>
+
+    <br>
+
+    <main>
+
+        <aside class="hunter">
+            <h2>SUPREME HUNTER</h2>
+            <img src="m-lvl1-1.jpg" alt="" srcset="">
+            <h3>Demonbane58</h3>
+        </aside>
+
+        <aside class="beasty">
+            <h2>Threat level
+                <br>
+                <span class="test">DRAGON</span>
+            </h2>
+            <img src="<%=current[0]['look'] %>" alt="" srcset="">
+            <p>
+                <%= current[0]['task'] %>
+            </p>
+
+        </aside>
+
+        <audio id="sound" src="d-sound-1.wav">x</audio>
+
+
+    </main>
+
+    <section>
+        <button class="battleSound">BATTLE</button>
+    </section>
+
+
+    <script src="hunting.js"></script>
+
+
+
+
+
+</body>

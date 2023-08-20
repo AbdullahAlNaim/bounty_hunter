@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASKS</title>
+    <link rel="stylesheet" href="taskcss.css">
+</head>
+
+<body>
+    <nav>
+        <h1>BOUNTY HUNTER</h1>
+        <ul>
+            <li><a href="http://localhost:3000/home">
+                    <button>Home</button></a></li>
+            <li>
+                <a href="http://localhost:3000/tasks"><button>Tasks</button></a>
+
+            </li>
+            <li><button>Challenge</button></li>
+            <li><button>Account</button></li>
+            <li><button>Settings</button></li>
+        </ul>
+    </nav>
+
+    <br>
+
+    <form id="paper" action="http://localhost:3000/tasks" method="post">
+        <h1>TASK</h1>
+        <input id="task" name='task' type="text" placeholder="Challenge">
+        <br>
+        <br>
+        <select name="threat_level" id="lvl">
+            <option value="--"></option>
+            <option value="low">LOW</option>
+            <option value="medium">MEDIUM</option>
+            <option value="high">HIGH</option>
+            <option value="very-high">VERY HIGH</option>
+        </select>
+        <br>
+        <br>
+        <button id="sender">SUBMIT</button>
+    </form>
+
+    <section class="task-list">
+        <% for(let x=0; x < current.length; x++) { %>
+            <article>
+                <div class="threatlvl">
+                    <%= current[x]['threat_level'] %>
+                </div>
+                <div class="task-name">
+                    <%= current[x]['task'] %>
+                </div>
+                <div class="take">
+                    <a href="http://localhost:3000/hunt">
+                        <Button>X</Button></a>
+                </div>
+            </article>
+            <% } %>
+    </section>
+
+
+
+</body>

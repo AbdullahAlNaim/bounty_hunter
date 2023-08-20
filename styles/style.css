@@ -1,0 +1,79 @@
+body {
+    background: url('bg-2.jpg');
+    margin: 0;
+}
+
+nav {
+
+    background-color: rgba(169, 151, 151, 0.8);
+}
+
+nav h1 {
+    margin: 0;
+    width: 50px;
+    display: inline;
+    font-size: 30px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    float: right;
+}
+
+nav ul li {
+    float: left;
+    padding: 5px;
+}
+
+main {
+    display: flex;
+}
+
+.hunter {
+    background-color: rgba(169, 151, 151, 0.7);
+    border: solid 5px rgba(169, 151, 151, 0.7);
+    width: 30%;
+    height: 30%;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-right: 3%;
+    text-align: center;
+}
+
+.hunter-options {
+    background-color: rgba(169, 151, 151, 0.7);
+    /* background: url('hunters/board.png'); */
+    background-repeat: no-repeat;
+    background-image: 100%;
+    width: 30%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-right: 3%;
+    text-align: center;
+}
+
+.hunter-options ul {
+    list-style-type: none;
+    margin-top: 10%;
+    padding: 30px 0;
+}
+
+
+.hunter-options ul li {
+    margin: 5%;
+}
+
+.option-list {
+    padding: 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(165, 69, 69);
+    color: white;
+}
+
+aside img {
+    width: 100%;
+}
