@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1/bounty_hunter')
 
 app.set('view engine', 'ejs');
 app.use(express.static('styles'));
@@ -15,12 +18,12 @@ const current = [
     {
         threat_level: 'Dragon',
         look: 'dragon-10.jpg',
-        task: 'Adding tasks component to game.'
+        task: 'Fix task submit reload page error.'
     },
     {
         threat_level: 'Dragon',
         look: 'dragon-10.jpg',
-        task: 'hunter facing creature.'
+        task: 'apply click task unique creature'
     },
     {
         threat_level: 'Dragon',
@@ -33,8 +36,6 @@ const current = [
         task: 'Pay dads bills'
     },
 ]
-
-
 
 app.get('/home', (req, res) => {
     res.render('home', { current });
@@ -49,24 +50,35 @@ app.get('/hunt', (req, res) => {
 })
 
 app.post('/tasks', (req, res) => {
-    console.log(req.body);
+
+    console.log(req.params);
     const newThreat = req.body;
 
     if (newThreat['threat_level'] === 'very-high') {
-        newThreat['threat_level'] = 'Dragon'
+        newThreat['threat_level'] = 'Dragon';
     }
     else if (newThreat['threat_level'] === 'high') {
-        newThreat['threat_level'] = 'Titan'
+        newThreat['threat_level'] = 'Titan';
     }
     else if (newThreat['threat_level'] === 'medium') {
-        newThreat['threat_level'] = 'Beast'
+        newThreat['threat_level'] = 'Beast';
     }
     else if (newThreat['threat_level'] === 'low') {
-        newThreat['threat_level'] = 'Grunt'
+        newThreat['threat_level'] = 'Grunt';
     }
 
+
+
+
     current.push(newThreat);
-    res.redirect('tasks', { current });
+    console.log('heres the new threat', newThreat);
+    try {
+        res.redirect('tasks', { current });
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 })
 
 app.listen(port, () => {
