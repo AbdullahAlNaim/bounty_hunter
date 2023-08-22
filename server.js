@@ -5,7 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const current = require('./localdb');
-console.log(current);
+//console.log(current);
 
 mongoose.connect('mongodb://127.0.0.1/bounty_hunter');
 
@@ -30,7 +30,7 @@ app.get('/hunt', (req, res) => {
     res.render('hunt', { current });
 })
 
-app.post('/tasks', (req, res) => {
+app.post('/tasks', (req, res, next) => {
 
     console.log(req.params);
     const newThreat = req.body;
@@ -51,7 +51,7 @@ app.post('/tasks', (req, res) => {
     current.push(newThreat);
     console.log('heres the new threat', newThreat);
     try {
-        res.redirect('tasks', { current });
+        res.render('tasks', { current });
     }
     catch (e) {
         console.log(e)
