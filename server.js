@@ -4,38 +4,19 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/bounty_hunter')
+const current = require('./localdb');
+console.log(current);
+
+mongoose.connect('mongodb://127.0.0.1/bounty_hunter');
 
 app.set('view engine', 'ejs');
 app.use(express.static('styles'));
 app.use(express.static('assets'));
 app.use(express.static('scripts'));
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
-const current = [
-    {
-        threat_level: 'Dragon',
-        look: 'dragon-10.jpg',
-        task: 'Fix task submit reload page error.'
-    },
-    {
-        threat_level: 'Dragon',
-        look: 'dragon-10.jpg',
-        task: 'apply click task unique creature'
-    },
-    {
-        threat_level: 'Dragon',
-        look: 'dragon-10.jpg',
-        task: 'Setting up the database.'
-    },
-    {
-        threat_level: 'Beast',
-        look: 'dragon-10.jpg',
-        task: 'Pay dads bills'
-    },
-]
 
 app.get('/home', (req, res) => {
     res.render('home', { current });
@@ -66,9 +47,6 @@ app.post('/tasks', (req, res) => {
     else if (newThreat['threat_level'] === 'low') {
         newThreat['threat_level'] = 'Grunt';
     }
-
-
-
 
     current.push(newThreat);
     console.log('heres the new threat', newThreat);

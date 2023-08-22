@@ -72,7 +72,7 @@ main {
     background-color: rgba(169, 151, 151, 0.7);
     border: solid 5px rgba(169, 151, 151, 0.7);
     width: 30%;
-    height: 50%;
+    height: 100%;
     margin-left: 10%;
     margin-right: 3%;
     text-align: center;
@@ -80,11 +80,15 @@ main {
 
 /* the creature side */
 
+main {
+    height: 40%;
+}
+
 .beasty {
     background-color: rgba(169, 151, 151, 0.7);
     border: solid 5px rgba(169, 151, 151, 0.7);
     width: 30%;
-    height: 50%;
+    height: 100%;
     margin-left: 10%;
     margin-right: 3%;
     text-align: center;

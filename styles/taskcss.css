@@ -34,7 +34,6 @@ nav ul li {
     background-color: rgba(169, 151, 151, 0.8);
     width: 400px;
     height: 300px;
-    margin: 5% auto;
     border-radius: 5px;
 }
 
@@ -53,10 +52,23 @@ h1 {
 .task-list {
     background-color: rgba(169, 151, 151, 0.8);
     width: 400px;
-    margin: auto;
 }
 
 .task-list article {
     display: flex;
     justify-content: space-between;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.task-list {
+    background-color: rgba(169, 151, 151, 0.8);
+}
+
+#kills {
+    background-color: rgba(169, 151, 151, 0.8);
+    font-size: 40px;
 }
