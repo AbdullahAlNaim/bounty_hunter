@@ -30,6 +30,12 @@ app.get('/hunt', (req, res) => {
     res.render('hunt', { current });
 })
 
+app.post('/hunt/:id', (req, res) => {
+    console.log(req.params)
+    // res.render('hunt');
+    res.send(`your task id ${req.params}`)
+})
+
 app.post('/tasks', (req, res, next) => {
 
     console.log(req.params);

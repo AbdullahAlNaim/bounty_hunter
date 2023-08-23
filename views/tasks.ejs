@@ -1,65 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TASKS</title>
-    <link rel="stylesheet" href="taskcss.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TASKS</title>
+        <link rel="stylesheet" href="taskcss.css">
+    </head>
 
-<body>
-    <nav>
-        <h1>BOUNTY HUNTER</h1>
-        <ul>
-            <li><a href="http://localhost:3000/home">
-                    <button>Home</button></a></li>
-            <li>
-                <a href="http://localhost:3000/tasks"><button>Tasks</button></a>
+    <body>
+        <nav>
+            <h1>BOUNTY HUNTER</h1>
+            <ul>
+                <li><a href="http://localhost:3000/home">
+                        <button>Home</button></a></li>
+                <li>
+                    <a href="http://localhost:3000/tasks"><button>Tasks</button></a>
+                </li>
+                <li><button>Challenge</button></li>
+                <li><button>Account</button></li>
+                <li><button>Settings</button></li>
+            </ul>
+        </nav>
 
-            </li>
-            <li><button>Challenge</button></li>
-            <li><button>Account</button></li>
-            <li><button>Settings</button></li>
-        </ul>
-    </nav>
-
-    <br>
-
-    <form id="paper" action="http://localhost:3000/tasks" method="post">
-        <h1>TASK</h1>
-        <input id="task" name='task' type="text" placeholder="Challenge">
         <br>
-        <br>
-        <select name="threat_level" id="lvl">
-            <option value="--"></option>
-            <option value="low">LOW</option>
-            <option value="medium">MEDIUM</option>
-            <option value="high">HIGH</option>
-            <option value="very-high">VERY HIGH</option>
-        </select>
-        <br>
-        <br>
-        <button id="sender">SUBMIT</button>
-    </form>
+        <main>
+            <form id="paper" action="http://localhost:3000/tasks" method="post">
+                <h1>TASK</h1>
+                <input id="task" name='task' type="text" placeholder="Challenge">
+                <br>
+                <br>
+                <label for="lvl">Difficulty Level</label>
+                <br>
+                <select name="threat_level" id="lvl">
+                    <option value="--"></option>
+                    <option value="low">LOW</option>
+                    <option value="medium">MEDIUM</option>
+                    <option value="high">HIGH</option>
+                    <option value="very-high">VERY HIGH</option>
+                </select>
+                <br>
+                <br>
+                <input type="text" name="task_type" placeholder="Type of task">
+                <br>
+                <br>
+                <label for="due">Due Date:</label>
+                <input name="due_date" type="date">
+                <label for="time"></label>
+                <input name="time_due" type="time">
+                <br>
+                <br>
+                <button id="sender">SUBMIT</button>
+            </form>
 
-    <section class="task-list">
-        <% for(let x=0; x < current.length; x++) { %>
-            <article>
-                <div class="threatlvl">
-                    <%= current[x]['threat_level'] %>
-                </div>
-                <div class="task-name">
-                    <%= current[x]['task'] %>
-                </div>
-                <div class="take">
-                    <a href="http://localhost:3000/hunt">
-                        <Button>X</Button></a>
-                </div>
-            </article>
-            <% } %>
-    </section>
+            <section class="task-list">
+                <article>
+                    <table>
+                        <th class="threatlvl">
+                            Threat Level
+                        </th>
+                        <th class="task-type">
+                            Task Type
+                        </th>
+                        <th class="task-name">
+                            Task
+                        </th>
+                        <th class="take">
+                            HUNT
+                        </th>
 
+                        <% for(let x=0; x < current.length; x++) { %>
+                        <% if(current[x]['completed']===false) {%>
+                        <tr>
+                            <td class="threatlvl">
+                                <%= current[x]['threat_level'] %>
+                            </td>
+                            <td class="task-type">
+                                <%= current[x]['task_type'] %>
+                            </td>
+                            <td class="task-name">
+                                <%= current[x]['task'] %>
+                            </td>
 
+                            <td class="take">
+                                <!-- <a href="http://localhost:3000/hunt">
+                                <Button>X</Button></a> -->
+                                <!-- <form id="battle-task" action="http://localhost:3000/hunt?<%=//id=x%>" method="post">
+                                <button>X</button>
+                            </form> -->
+                                <form class="battle-task" action="http://localhost:3000/hunt" method=" post">
+                                    <button>X</button>
+                                </form>
 
-</body>
+                            </td>
+                        </tr>
+
+                        <% } %>
+                        <% } %>
+                    </table>
+                </article>
+            </section>
+
+            <section>
+                <article id="kills">
+                    <% let grunts=0 %>
+                    <% let beasts=0 %>
+                    <% let titans=0 %>
+                    <% let dragons=0 %>
+                    <% let laviathans=0 %>
+                    <% let krakens=0 %>
+
+                    <% for(let x=0; x < current.length; x++){ %>
+                    <% if(current[x]['threat_level']==='Grunt' &&
+                                                    current[x]['completed']===true) {%>
+                    <% grunts +=1; %>
+                    <% } %>
+                    <% if(current[x]['threat_level']==='Beast' &&
+                                                                current[x]['completed']===true) {%>
+                    <% beasts +=1; %>
+                    <% } %>
+                    <% if(current[x]['threat_level']==='Titan' && current[x]['completed']===true) {%>
+                    <% titans +=1; %>
+                    <% } %>
+
+                    <% if(current[x]['threat_level']==='Dragon' && current[x]['completed']===true){%>
+                    <% dragons +=1; %>
+                    <% } %>
+                    <% if(current[x]['threat_level']==='Laviathan' && current[x]['completed']===true){%>
+                    <% laviathans +=1; %>
+                    <% } %>
+
+                    <% if(current[x]['threat_level']==='Kraken' && current[x]['completed']===true) {%>
+                    <% krakens +=1;%>
+                    <% } %>
+                    <% } %>
+                    <table>
+                        <tr>
+                            <th>Creatures
+                            </th>
+
+                            <th>Takedowns
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <td>Grunts
+                            </td>
+                            <td>
+                                <%= grunts %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Beasts
+                            </td>
+                            <td>
+                                <%= beasts %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Titans
+                            </td>
+                            <td>
+                                <%= titans%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dragons
+                            </td>
+                            <td>
+                                <%= dragons%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Laviathans
+                            </td>
+                            <td>
+                                <%= laviathans%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Krakens
+                            </td>
+                            <td>
+                                <%= krakens%>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+        </main>
+
+    </body>

@@ -72,3 +72,11 @@ main {
     background-color: rgba(169, 151, 151, 0.8);
     font-size: 40px;
 }
+
+.task-type {
+    float: left;
+}
+
+.battle-task {
+    float: right;
+}
