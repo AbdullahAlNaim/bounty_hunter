@@ -5,7 +5,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const current = require('./localdb');
-//console.log(current);
 
 mongoose.connect('mongodb://127.0.0.1/bounty_hunter');
 
@@ -17,7 +16,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 
-
 app.get('/home', (req, res) => {
     res.render('home', { current });
 })
@@ -27,14 +25,28 @@ app.get('/tasks', (req, res) => {
 })
 
 app.get('/hunt', (req, res) => {
-    res.render('hunt', { current });
+    res.render('hunt', { current })
 })
 
-app.post('/hunt/:id', (req, res) => {
+// app.post('/tasks:id', (req, res) => {
+//     id = req.params;
+//     res.render('hunt', { id, current })
+// })
+
+app.post('/tasks/:id', (req, res) => {
     console.log(req.params)
-    // res.render('hunt');
-    res.send(`your task id ${req.params}`)
+    res.send(`this is the id`)
 })
+
+app.post('/hunt', (req, res) => {
+    res.render('hunt')
+})
+
+// app.post('/hunt/:id', (req, res) => {
+//     console.log(req.params)
+//     id = req.params;
+//     res.send(`your task id ${id}`)
+// })
 
 app.post('/tasks', (req, res, next) => {
 
