@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const current = require('./localdb');
 
-mongoose.connect('mongodb://127.0.0.1/bounty_hunter');
+//mongoose.connect('mongodb://127.0.0.1/bounty_hunter');
 
 app.set('view engine', 'ejs');
 app.use(express.static('styles'));
@@ -15,6 +15,10 @@ app.use(express.static('scripts'));
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+    res.render('home')
+})
 
 app.get('/home', (req, res) => {
     res.render('home', { current });
